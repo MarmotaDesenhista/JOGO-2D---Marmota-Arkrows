@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 36088444}
   - component: {fileID: 36088446}
   - component: {fileID: 36088445}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: "Ch\xE3o - torre"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,6 +258,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &340041951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 340041952}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &340041952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340041951}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.026, y: -0.024, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 436105175}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &436105172
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,10 +425,11 @@ Transform:
   m_GameObject: {fileID: 436105172}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.011, y: -3.1, z: 0}
+  m_LocalPosition: {x: 0.016, y: -3.204, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 340041952}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &436105176
@@ -412,14 +444,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91b4d2606aa3ea4787f385397e02d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  velocidade: 3
-  forcaDoPulo: 10
-  corteDoPulo: 0.5
-  groundCheck: {fileID: 0}
-  groundCheckRaio: 0.2
+  velocidade: 2.7
+  forcaDoPulo: 7
+  corteDoPulo: 0.3
+  groundCheck: {fileID: 340041952}
+  groundCheckRaio: 0.1
   camadaDoChao:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 25
 --- !u!95 &436105177
 Animator:
   serializedVersion: 7
@@ -479,6 +511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 513645969}
   - component: {fileID: 513645970}
+  - component: {fileID: 513645971}
   m_Layer: 0
   m_Name: SPRITE CEU
   m_TagString: Untagged
@@ -561,6 +594,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &513645971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513645968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c11491c6ac1cb45b4707b3a631befa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Parallax
+  cameraTransform: {fileID: 519420032}
+  velocidadeParallax: 0.1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +620,8 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -698,6 +747,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c08f286a8db594294261537ab1418c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  personagem: {fileID: 436105175}
+  suavidade: 4
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c11491c6ac1cb45b4707b3a631befa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Parallax
+  cameraTransform: {fileID: 519420032}
+  velocidadeParallax: 0.1
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 980636715}
   - component: {fileID: 980636716}
+  - component: {fileID: 980636717}
   m_Layer: 0
   m_Name: SPRITE MATO
   m_TagString: Untagged
@@ -895,6 +973,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &980636717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980636714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c11491c6ac1cb45b4707b3a631befa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Parallax
+  cameraTransform: {fileID: 519420032}
+  velocidadeParallax: 0.05
 --- !u!1 &1041797793
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +1036,7 @@ GameObject:
   - component: {fileID: 1185247245}
   - component: {fileID: 1185247244}
   - component: {fileID: 1185247246}
+  - component: {fileID: 1185247247}
   m_Layer: 0
   m_Name: SPRITE TORRE
   m_TagString: Untagged
@@ -1048,6 +1141,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1185247247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185247243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c11491c6ac1cb45b4707b3a631befa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Parallax
+  cameraTransform: {fileID: 519420032}
+  velocidadeParallax: 0.01
 --- !u!1 &1231942022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1166,7 @@ GameObject:
   - component: {fileID: 1231942023}
   - component: {fileID: 1231942025}
   - component: {fileID: 1231942024}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: "Ch\xE3o - old scap"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1198,7 +1305,7 @@ GameObject:
   - component: {fileID: 1758263418}
   - component: {fileID: 1758263420}
   - component: {fileID: 1758263419}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: "Ch\xE3o - escada"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,6 +1447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1943379658}
   - component: {fileID: 1943379659}
+  - component: {fileID: 1943379660}
   m_Layer: 0
   m_Name: SPRITE MONTANHAS
   m_TagString: Untagged
@@ -1422,6 +1530,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1943379660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943379657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c11491c6ac1cb45b4707b3a631befa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Parallax
+  cameraTransform: {fileID: 519420032}
+  velocidadeParallax: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
